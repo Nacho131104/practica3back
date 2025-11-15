@@ -55,6 +55,7 @@ router.post("/login", async (req, res)=>{
         const validar = await bcrypt.compare(password, user.password);
         if(!validar) return res.status(404).json({message: "contraseña incorrecta"});
 
+        //se genera el token para luego poder usar la lista de comics
         const token = jwt.sign({id: user._id?.toString(), email: user.email} as JwtPayload, SECRET as string, {
             expiresIn: "1h"
         });
