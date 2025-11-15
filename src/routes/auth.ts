@@ -48,7 +48,7 @@ router.post("/login", async (req, res)=>{
         const users = coleccion();
 
         const user = await users.findOne({email});
-        if(!user) return res.status(404).json({message: "email incorrecto"});
+        if(!user) return res.status(404).json({message: "email existente"});
 
 
         //con compare se comprueba si la password encriptada corresponde a la real

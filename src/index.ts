@@ -13,4 +13,4 @@ app.use(express.json());
 app.use("/auth", rutasAuth);
 app.use("/comics", rutasComics);
 
-app.listen(3000, () => console.log("API funcionando.... "));
+app.listen(3000, () => console.log("API funcionando en puerto .... "+3000));

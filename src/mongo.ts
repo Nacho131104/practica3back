@@ -8,7 +8,7 @@ let db: Db
 dotenv.config()
 
 //la url se hace asi porque si ponemos la url directamente puede estar indefinida
-const MONGO = `mongodb+srv://${process.env.USER_MONGO}:${process.env.USER_PASSWORD}@${process.env.MONGO_CLUSTER}.i9f0x.mongodb.net/?appName=${process.env.MONGO_APP_NAME}`
+const MONGO = `mongodb+srv://${process.env.USER_MONGO}:${process.env.USER_PASSWORD}@${process.env.MONGO_CLUSTER}.vbb5s.mongodb.net/?appName=${process.env.MONGO_APP_NAME}`
 
 export const connectmongodb = async (): Promise<void> =>{
     try{

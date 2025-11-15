@@ -7,7 +7,7 @@ import { ObjectId } from "mongodb";
 
 const router = Router();
 
-const coleccion = () => getDb().collection<Tebeo>("Comics");
+const coleccion = () => getDb().collection<Tebeo>("comicVault");
 
 
 router.get("/user", verifyToken, (req: AuthRequest, res) => {
@@ -38,11 +38,13 @@ router.get("/", verifyToken, async (req: AuthRequest, res) => {
 router.get("/:id", async (req, res) => {
     const id = req.params.id;
     if (id.length == 24) {
-      const comicEncontradoOno = await coleccion().findOne({
+      const encontrado = await coleccion().findOne({
         _id: new ObjectId(id),
       });
-      comicEncontradoOno
-        ? res.json(comicEncontradoOno)
+
+      //si se encuentra el comic se devuelve, sino da errord
+      encontrado
+        ? res.json(encontrado)
         : res.status(404).json({ message: "Comic no encontrado, por favor pruebe con otro id" });
     } else {
       res
